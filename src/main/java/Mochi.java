@@ -96,7 +96,7 @@ public class Mochi {
                     System.out.println(line);
                     System.out.println(" Gotcha. I got add this task:");
                     System.out.println("  " + task);
-                    System.out.println(" Now you got " + tasks.size() + " tasks in the list.");
+                    System.out.println(" Now you got " + tasks.size() + " thingies to do.");
                     System.out.println(line);
 
                 } else if (input.startsWith("event")) {
@@ -113,7 +113,7 @@ public class Mochi {
                     System.out.println(line);
                     System.out.println(" Gotcha. I got add this task:");
                     System.out.println("  " + task);
-                    System.out.println(" Now you got " + tasks.size() + " tasks in the list.");
+                    System.out.println(" Now you got " + tasks.size() + " thingies to do.");
                     System.out.println(line);
 
                 } else if (input.startsWith("delete")) {
