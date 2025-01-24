@@ -1,7 +1,30 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+  ------------------------------------------------
+  It's you again.. Mochi at your service miserably.
+  What you want?
+  ------------------------------------------------
+  Gotcha. I got add this task:
+   [T][ ] borrow book
+  Now you got 1 thingies to do.
+  ------------------------------------------------
+  Gotcha. I got add this task:
+   [D][ ] return book (by: Sunday)
+  Now you got 2 tasks in the list.
+  ------------------------------------------------
+  Gotcha. I got add this task:
+   [E][ ] project meeting (from: Mon 2pm to: 4pm)
+  Now you got 3 tasks in the list.
+  ------------------------------------------------
+  Look at the consequences of your procrastination:
+   1. [T][ ] borrow book
+   2. [D][ ] return book (by: Sunday)
+   3. [E][ ] project meeting (from: Mon 2pm to: 4pm)
+  ------------------------------------------------
+  Wow. You actually did something, that's one down I guess. You are becoming a decent human being.
+  [D][X] return book (by: Sunday)
+  ------------------------------------------------
+  Sigh, it was my fault to think you actually finished a task..
+  [D][ ] return book (by: Sunday)
+  ------------------------------------------------
+  Bye. Sayonara. Be gone.
+  ------------------------------------------------
 
