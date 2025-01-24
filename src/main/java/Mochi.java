@@ -8,7 +8,6 @@ public class Mochi {
         String botName = "Mochi";
         ArrayList<Task> tasks = new ArrayList<>();
 
-
         System.out.println(line);
         System.out.println(" It's you again.. " + botName + " at your service miserably.");
         System.out.println(" What you want?");
@@ -30,6 +29,7 @@ public class Mochi {
                     for (int i = 0; i < tasks.size(); i++) {
                         System.out.println(" " + (i + 1) + ". " + tasks.get(i));
                     }
+
                     System.out.println(line);
 
                 } else if (input.startsWith("mark")) {
@@ -51,10 +51,12 @@ public class Mochi {
                     if (input.length() <= 6 || input.substring(7).trim().isEmpty()) {
                         throw new MochiException(" Great, now you want me to read your mind to unmark a task.");
                     }
+
                     int taskInd = Integer.parseInt(input.substring(7)) - 1;
                     if (taskInd < 0 || taskInd >= tasks.size()) {
                         throw new MochiException(" Babes, this task don't even exist?? How to unmark?");
                     }
+
                     tasks.get(taskInd).markAsNotDone();
                     System.out.println(line);
                     System.out.println(" Sigh, it was my fault to think you actually finished a task..");
@@ -65,10 +67,12 @@ public class Mochi {
                     if (input.length() <= 4) {
                         throw new MochiException(" Aigoo, you need description to make a todo sis!");
                     }
+
                     String desc = input.substring(5).trim();
                     if (desc.isEmpty()) {
                         throw new MochiException(" Aigoo, you need description to make a todo sis!");
                     }
+
                     Task task = new Todo(desc);
                     tasks.add(task);
                     System.out.println(line);
@@ -81,10 +85,12 @@ public class Mochi {
                     if (input.length() <= 8) {
                         throw new MochiException(" Yo, deadlines need description, and when to do '/by'.");
                     }
+
                     String[] p = input.substring(9).split(" /by ");
                     if (p.length < 2 || p[0].isEmpty() || p[1].isEmpty()) {
                         throw new MochiException(" Yo, deadlines need description, and when to do '/by'.");
                     }
+
                     Task task = new Deadline(p[0], p[1]);
                     tasks.add(task);
                     System.out.println(line);
@@ -97,6 +103,7 @@ public class Mochi {
                     if (input.length() <= 5) {
                         throw new MochiException(" Babes, events need a description, a '/from' time and a '/to' time");
                     }
+
                     String[] p = input.substring(6).split("/from | /to");
                     if (p.length < 3 || p[0].isEmpty() || p[1].isEmpty() || p[2].isEmpty()) {
                         throw new MochiException(" Babes, events need a description, a '/from' time and a '/to' time");
@@ -114,17 +121,20 @@ public class Mochi {
                         throw new MochiException(" Great, now you cant't even delete tasks.. " +
                                 "Bro, tell me which task to delete.");
                     }
+
                     try {
                         int taskInd = Integer.parseInt(input.substring(7).trim()) - 1;
                         if (taskInd < 0 || taskInd >= tasks.size()) {
                             throw new MochiException(" Babes this task doesn't exist. Give me a task that exists.");
                         }
+
                         Task task = tasks.remove(taskInd);
                         System.out.println(line);
                         System.out.println(" Can. Take out task already.");
                         System.out.println(" " + task);
                         System.out.println(" Now you got " + tasks.size() + " tasks in the list.");
                         System.out.println(line);
+
                     } catch (NumberFormatException e) {
                         throw new MochiException(" Eh can give me valid number to delete or not?!");
                     }
