@@ -133,12 +133,13 @@ public class Mochi {
                     throw new MochiException(" Bro nani are you saying? Can you please make sense? Jebal!!");
                 }
             }
-            catch(MochiException e){
+
+            catch (MochiException e){
                     System.out.println(line);
                     System.out.println(" " + e.getMessage());
                     System.out.println(line);
 
-            } catch(Exception e){
+            } catch (Exception e){
                 System.out.println(line);
                 System.out.println(" Life as your bot is a mess. you keep doing things like this: "
                             + e.getMessage());
