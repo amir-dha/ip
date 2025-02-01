@@ -61,10 +61,6 @@ public class Storage {
     private Task parseTask(String line) {
         try {
             String[] parts = line.split(" \\| ");
-            for (int i = 0; i < parts.length; i++) {
-                parts[i] = parts[i].trim();
-            }
-
             String type = parts[0];
             boolean isDone = parts[1].equals("1");
             String desc = parts[2];
