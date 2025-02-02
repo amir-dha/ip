@@ -1,4 +1,6 @@
-abstract class Task {
+package mochi.task;
+
+public abstract class Task {
     protected String desc;
     protected boolean isDone;
 

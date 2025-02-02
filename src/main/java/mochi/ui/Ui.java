@@ -1,3 +1,5 @@
+package mochi.ui;
+
 public class Ui {
     private static final String LINE = " ----------------------------------------------------------------------------";
     private static final String BOTNAME = "Mochi";

@@ -1,2 +1,0 @@
-T | 1 | buy grocery
-E | 0 | Team meeting | 2025-02-12 1500 | 2025-02-12 1600

@@ -1,6 +1,17 @@
+package mochi.command;
+
+
+import mochi.task.Task;
+import mochi.task.Todo;
+import mochi.task.Deadline;
+import mochi.task.Event;
+import mochi.task.TaskList;
+import mochi.storage.Storage;
+import mochi.ui.Ui;
+import mochi.MochiException;
 import java.io.IOException;
 
-abstract class Command {
+public abstract class Command {
     public abstract void exec(TaskList tasks, Ui ui, Storage storage) throws IOException, MochiException;
     public boolean isBye() {
         return false;

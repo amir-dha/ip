@@ -1,7 +1,9 @@
+package mochi.task;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-class Deadline extends Task {
+public class Deadline extends Task {
     protected LocalDateTime by;
     private static final DateTimeFormatter INPUT_FORM = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private static final DateTimeFormatter OUTPUT_FORM = DateTimeFormatter.ofPattern("d MMM yyyy, h:mm a");
