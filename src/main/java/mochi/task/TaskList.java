@@ -11,6 +11,7 @@ import mochi.task.Deadline;
 import mochi.task.Event;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskList {
     private ArrayList<Task> tasks;
@@ -21,6 +22,10 @@ public class TaskList {
 
     public TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
     }
 
     public void addTask(Task task, Ui ui, Storage storage) throws IOException {
