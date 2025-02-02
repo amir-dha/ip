@@ -20,6 +20,6 @@ class Event extends Task {
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + from.format(OUTPUT_FORM) + " to: " + to.format(OUTPUT_FORM) + ")";
+        return " [E]" + super.toString() + " (from: " + from.format(OUTPUT_FORM) + " to: " + to.format(OUTPUT_FORM) + ")";
     }
 }

@@ -1,4 +1,2 @@
-T | 0 | Buy groceries
-D | 1 | Submit report | 2024-07-01 1800
-T | 0 | Buy groceries
-D | 0 | Submit report | 2024-07-01 1800
+T | 1 | buy grocery
+E | 0 | Team meeting | 2025-02-12 1500 | 2025-02-12 1600
