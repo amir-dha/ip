@@ -48,11 +48,11 @@ public class Mochi {
     public void run() {
         ui.showWelcome();
         boolean isBye = false;
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         while (!isBye) {
             try {
-                String instruction = sc.nextLine().trim();
+                String instruction = scanner.nextLine().trim();
                 Command command = Parser.parse(instruction);
                 command.exec(tasks, ui, storage);
                 isBye = command.isBye();
@@ -62,7 +62,7 @@ public class Mochi {
                 ui.showError("Got some other error: " + e.getMessage());
             }
         }
-        sc.close();
+        scanner.close();
     }
 }
 
