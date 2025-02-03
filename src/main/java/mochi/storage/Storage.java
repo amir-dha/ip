@@ -15,13 +15,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+\
+
+/**
+ * Handles file storage for tasks, including loading and saving tasks.
+ */
 public class Storage {
     private String filePath;
 
+    /**
+     * Constructs a Storage instance with the specified file path.
+     * @param filePath The file path for storing tasks.
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
     }
 
+    /**
+     * Loads tasks from the storage file.
+     * @return A list of loaded tasks.
+     * @throws IOException If an error occurs during file reading.
+     */
     public ArrayList<Task> loadTasks() throws IOException {
         File file = new File(filePath);
         ArrayList<Task> tasks = new ArrayList<>();
@@ -47,6 +61,11 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Saves tasks to storage file
+     * @param tasks The list of tasks to be saved.
+     * @throws IOException If an error occurs during the file writing.
+     */
     public void saveTasks(ArrayList<Task> tasks) throws IOException {
         File file = new File(filePath);
 
@@ -66,6 +85,11 @@ public class Storage {
         writer.close();
     }
 
+    /**
+     * Parses a task from a formatted string.
+     * @param line The formatted task string.
+     * @return The parsed Task object, or null if parsing fails.
+     */
     private Task parseTask(String line) {
         try {
             String[] parts = line.split(" \\| ");

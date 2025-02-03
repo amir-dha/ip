@@ -8,6 +8,10 @@ import mochi.storage.Storage;
 import mochi.ui.Ui;
 import mochi.task.TaskList;
 
+/**
+ * Main class for Mochi chatbot application.
+ * Handles user interactions, task management and file storage.
+ */
 
 
 public class Mochi {
@@ -15,6 +19,10 @@ public class Mochi {
     private Storage storage;
     private Ui ui;
 
+    /**
+     * Initializes the Mochi application with a specified file path for storing tasks.
+     * @param filePath Path to the storage file.
+     */
     public Mochi(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -26,10 +34,17 @@ public class Mochi {
         }
     }
 
+    /**
+     * Main entry point for the application.
+     * @param args Command-line arguments.
+     */
     public static void main(String[] args) {
         new Mochi("./data/mochi.txt").run();
     }
 
+    /**
+     * Run the chatbot loop, processing user commands until exit command is given.
+     */
     public void run() {
         ui.showWelcome();
         boolean isBye = false;
@@ -49,7 +64,6 @@ public class Mochi {
         }
         sc.close();
     }
-
 }
 
 

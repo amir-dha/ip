@@ -13,7 +13,17 @@ import mochi.ui.Ui;
 import mochi.storage.Storage;
 import mochi.MochiException;
 
+/**
+ * Parses user input and returns the corresponding command.
+ */
 public class Parser {
+
+    /**
+     * Parses a user command from input.
+     * @param input The raw user input.
+     * @return A command instance representing the user's input.
+     * @throws MochiException MochiException if the input is invalid.
+     */
     public static Command parse(String input) throws MochiException {
         String[] pts = input.split(" ", 2);
         switch (pts[0]) {
