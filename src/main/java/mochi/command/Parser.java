@@ -56,6 +56,11 @@ public class Parser {
                 } catch (NumberFormatException e) {
                     throw new MochiException(" Eh can give me a valid number to delete or not?!");
                 }
+            case "find":
+                if (pts.length < 2) {
+                    throw new MochiException(" Oi, what you looking for bro??");
+                }
+                return new FindCommand(pts[1]);
             default:
                 throw new MochiException(" Bro nani are you saying? Can you please make sense? Jebal!!");
         }

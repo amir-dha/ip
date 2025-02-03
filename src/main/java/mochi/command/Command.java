@@ -91,3 +91,23 @@ class UnmarkCommand extends Command {
 
 }
 
+/**
+ * Handles the "find" command to search for tasks containing a given keyword.
+ */
+class FindCommand extends Command {
+    private String keyword;
+
+    /**
+     * Constructs a FindComment with the specified keyword.
+     * @param keyword The keyword to search for in tasks.
+     */
+    public FindCommand(String keyword) {
+        this.keyword = keyword;
+    }
+
+    @Override
+    public void exec(TaskList tasks, Ui ui, Storage storage) {
+        tasks.findTasks(keyword, ui);
+    }
+}
+

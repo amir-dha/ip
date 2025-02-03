@@ -79,4 +79,31 @@ public class TaskList {
             ui.printLine();
         }
     }
+
+    /**
+     * Finds and lists tasks that contain the given keyword in their description.
+     * @param keyword The keyword to search for.
+     * @param ui The UI instance for displaying messages.
+     */
+    public void findTasks(String keyword, Ui ui) {
+        ArrayList<Task> matchingTasks = new ArrayList<>();
+
+        for (Task task : tasks) {
+            if (task.toString().toLowerCase().contains(keyword.toLowerCase())) {
+                matchingTasks.add(task);
+            }
+        }
+
+        if (matchingTasks.isEmpty()) {
+            ui.showMessage("Bro no such task eh.");
+        } else {
+            ui.printLine();
+            System.out.println("Here, the task that match in your never-ending list.");
+            for (int i = 0; i < matchingTasks.size(); i++) {
+                System.out.println((i + 1) + ". " + matchingTasks.get(i));
+            }
+
+            ui.printLine();;
+        }
+    }
 }
