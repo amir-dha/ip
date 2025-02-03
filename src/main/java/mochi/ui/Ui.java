@@ -2,14 +2,14 @@ package mochi.ui;
 
 public class Ui {
     private static final String LINE = " ----------------------------------------------------------------------------";
-    private static final String BOTNAME = "Mochi";
+    private static final String BOT_NAME = "Mochi";
 
     public void printLine() {
         System.out.println(LINE);
     }
     public void showWelcome() {
         printLine();
-        System.out.println(" It's you again.. " + BOTNAME + " at your service miserably.");
+        System.out.println(" It's you again.. " + BOT_NAME + " at your service miserably.");
         System.out.println(" What you want?");
         printLine();
     }
