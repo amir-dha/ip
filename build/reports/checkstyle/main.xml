@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.2">
+<file name="C:\Users\ravic\ip\ip\src\main\java\mochi\command\Command.java">
+</file>
+<file name="C:\Users\ravic\ip\ip\src\main\java\mochi\command\Parser.java">
+</file>
+<file name="C:\Users\ravic\ip\ip\src\main\java\mochi\Mochi.java">
+</file>
+<file name="C:\Users\ravic\ip\ip\src\main\java\mochi\MochiException.java">
+</file>
+<file name="C:\Users\ravic\ip\ip\src\main\java\mochi\storage\Storage.java">
+</file>
+<file name="C:\Users\ravic\ip\ip\src\main\java\mochi\task\Deadline.java">
+</file>
+<file name="C:\Users\ravic\ip\ip\src\main\java\mochi\task\Event.java">
+</file>
+<file name="C:\Users\ravic\ip\ip\src\main\java\mochi\task\Task.java">
+</file>
+<file name="C:\Users\ravic\ip\ip\src\main\java\mochi\task\TaskList.java">
+</file>
+<file name="C:\Users\ravic\ip\ip\src\main\java\mochi\task\Todo.java">
+</file>
+<file name="C:\Users\ravic\ip\ip\src\main\java\mochi\ui\Ui.java">
+</file>
+</checkstyle>

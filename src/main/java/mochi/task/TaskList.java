@@ -1,16 +1,13 @@
 package mochi.task;
 
-import mochi.MochiException;
-import mochi.storage.Storage;
-import mochi.ui.Ui;
-import mochi.MochiException;
-import mochi.task.Task;
-import mochi.task.Todo;
-import mochi.task.Deadline;
-import mochi.task.Event;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import mochi.MochiException;
+import mochi.storage.Storage;
+import mochi.ui.Ui;
+
 
 /**
  * Manages the list of tasks and provides operations to modify them.
@@ -51,7 +48,8 @@ public class TaskList {
     public void addTask(Task task, Ui ui, Storage storage) throws IOException {
         tasks.add(task);
         storage.saveTasks(tasks);
-        ui.showMessage(" Gotcha, I got add this task:\n" + task + "\n Now you got " + tasks.size() + " thingies to do.");
+        ui.showMessage(" Gotcha, I got add this task:\n"
+                + task + "\n Now you got " + tasks.size() + " thingies to do.");
     }
 
     /**
@@ -150,8 +148,7 @@ public class TaskList {
             for (int i = 0; i < matchingTasks.size(); i++) {
                 System.out.println((i + 1) + ". " + matchingTasks.get(i));
             }
-
-            ui.printLine();;
+            ui.printLine();
         }
     }
 }

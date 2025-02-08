@@ -1,21 +1,20 @@
 package mochi.storage;
 
-import mochi.task.TaskList;
-import mochi.task.Task;
-import mochi.task.Todo;
-import mochi.task.Deadline;
-import mochi.task.Event;
-import mochi.MochiException;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.FileReader;
 import java.io.BufferedWriter;
-import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-\
+import mochi.task.Deadline;
+import mochi.task.Event;
+import mochi.task.Task;
+import mochi.task.Todo;
+
+
+
 
 /**
  * Handles file storage for tasks, including loading and saving tasks.
@@ -99,17 +98,17 @@ public class Storage {
 
             Task task;
             switch (type) {
-                case "T":
-                    task = new Todo(desc);
-                    break;
-                case "D":
-                    task = new Deadline(desc, parts[3]);
-                    break;
-                case "E":
-                    task = new Event(desc, parts[3], parts[4]);
-                    break;
-                default:
-                    return null;
+            case "T":
+                task = new Todo(desc);
+                break;
+            case "D":
+                task = new Deadline(desc, parts[3]);
+                break;
+            case "E":
+                task = new Event(desc, parts[3], parts[4]);
+                break;
+            default:
+                return null;
             }
 
             if (isDone) {

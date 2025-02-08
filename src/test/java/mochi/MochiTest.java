@@ -1,12 +1,16 @@
 package mochi;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+
+
 
 public class MochiTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -38,7 +42,8 @@ public class MochiTest {
     void testAddEvent() {
         simulateInput("event party /from 2024-07-02 1800 /to 2024-07-02 2300\nlist\nbye\n");
         Mochi.main(new String[]{});
-        assertTrue(outContent.toString().contains(" [E][ ] party (from: 2 Jul 2024, 6:00 PM to: 2 Jul 2024, 11:00 PM)"));
+        assertTrue(outContent.toString()
+                .contains(" [E][ ] party (from: 2 Jul 2024, 6:00 PM to: 2 Jul 2024, 11:00 PM)"));
     }
 
     @Test

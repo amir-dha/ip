@@ -1,11 +1,14 @@
 package mochi.task;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
+
 import mochi.storage.Storage;
-import java.io.IOException;
 import mochi.ui.Ui;
 
 public class TaskListTest {

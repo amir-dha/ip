@@ -2,11 +2,13 @@ package mochi;
 
 import java.io.IOException;
 import java.util.Scanner;
-import mochi.command.Parser;
+
 import mochi.command.Command;
+import mochi.command.Parser;
 import mochi.storage.Storage;
-import mochi.ui.Ui;
 import mochi.task.TaskList;
+import mochi.ui.Ui;
+
 
 /**
  * Main class for Mochi chatbot application.
