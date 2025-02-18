@@ -68,11 +68,11 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\ip.jar
+set CLASSPATH=%APP_HOME%\lib\ip.jar;%APP_HOME%\lib\javafx-fxml-17.0.7-win.jar;%APP_HOME%\lib\javafx-fxml-17.0.7-mac.jar;%APP_HOME%\lib\javafx-fxml-17.0.7-linux.jar;%APP_HOME%\lib\javafx-controls-17.0.7-win.jar;%APP_HOME%\lib\javafx-controls-17.0.7-mac.jar;%APP_HOME%\lib\javafx-controls-17.0.7-linux.jar;%APP_HOME%\lib\javafx-controls-17.0.7.jar;%APP_HOME%\lib\javafx-graphics-17.0.7-win.jar;%APP_HOME%\lib\javafx-graphics-17.0.7-mac.jar;%APP_HOME%\lib\javafx-graphics-17.0.7-linux.jar;%APP_HOME%\lib\javafx-graphics-17.0.7.jar;%APP_HOME%\lib\javafx-base-17.0.7-win.jar;%APP_HOME%\lib\javafx-base-17.0.7-mac.jar;%APP_HOME%\lib\javafx-base-17.0.7-linux.jar;%APP_HOME%\lib\javafx-base-17.0.7.jar
 
 
 @rem Execute ip
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %IP_OPTS%  -classpath "%CLASSPATH%" mochi.Mochi %*
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %IP_OPTS%  -classpath "%CLASSPATH%" mochi.Launcher %*
 
 :end
 @rem End local scope for the variables with windows NT shell

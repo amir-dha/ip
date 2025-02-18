@@ -8,22 +8,20 @@ import mochi.task.Task;
 import mochi.task.TaskList;
 import mochi.ui.Ui;
 
-
-
 /**
  * Represents an abstract command that can be executed on the task list.
  */
 public abstract class Command {
-
     /**
-     * Executes the command on the given task list, user interface and storage.
+     * Executes the command on the given task list, user interface, and storage.
      * @param tasks The task list to modify.
      * @param ui The UI instance for displaying messages.
      * @param storage The storage instance for saving tasks.
      * @throws IOException If an error occurs while saving.
      * @throws MochiException If the command execution fails.
      */
-    public abstract void exec(TaskList tasks, Ui ui, Storage storage) throws IOException, MochiException;
+    public abstract String exec(TaskList tasks, Ui ui, Storage storage) throws IOException, MochiException;
+
     public boolean isBye() {
         return false;
     }
@@ -34,8 +32,8 @@ public abstract class Command {
  */
 class ByeCommand extends Command {
     @Override
-    public void exec(TaskList tasks, Ui ui, Storage storage) {
-        ui.showMessage(" Bye. Sayonara. Begone.");
+    public String exec(TaskList tasks, Ui ui, Storage storage) {
+        return "Bye. Sayonara. Begone.";
     }
 
     @Override
@@ -48,10 +46,9 @@ class ByeCommand extends Command {
  * Handles the "list" command to display all tasks.
  */
 class ListCommand extends Command {
-
     @Override
-    public void exec(TaskList tasks, Ui ui, Storage storage) {
-        tasks.listTasks(ui);
+    public String exec(TaskList tasks, Ui ui, Storage storage) {
+        return tasks.listTasks(ui);
     }
 }
 
@@ -59,7 +56,7 @@ class ListCommand extends Command {
  * Handles the "add" command to add a task to the task list.
  */
 class AddCommand extends Command {
-    private Task task;
+    private final Task task;
 
     /**
      * Constructs an AddCommand with the specified task.
@@ -70,8 +67,8 @@ class AddCommand extends Command {
     }
 
     @Override
-    public void exec(TaskList tasks, Ui ui, Storage storage) throws IOException {
-        tasks.addTask(task, ui, storage);
+    public String exec(TaskList tasks, Ui ui, Storage storage) throws IOException {
+        return tasks.addTask(task, ui, storage);
     }
 }
 
@@ -79,7 +76,7 @@ class AddCommand extends Command {
  * Handles the "delete" command to remove a task from the task list.
  */
 class DeleteCommand extends Command {
-    private int taskInd;
+    private final int taskInd;
 
     /**
      * Constructs a DeleteCommand with the specified task index.
@@ -90,16 +87,16 @@ class DeleteCommand extends Command {
     }
 
     @Override
-    public void exec(TaskList tasks, Ui ui, Storage storage) throws IOException, MochiException {
-        tasks.deleteTask(taskInd, ui, storage);
+    public String exec(TaskList tasks, Ui ui, Storage storage) throws IOException, MochiException {
+        return tasks.deleteTask(taskInd, ui, storage);
     }
 }
 
 /**
- * Handles the "Mark" command to mark a task as done.
+ * Handles the "mark" command to mark a task as done.
  */
 class MarkCommand extends Command {
-    private int taskInd;
+    private final int taskInd;
 
     /**
      * Constructs a MarkCommand with the specified task index.
@@ -110,16 +107,16 @@ class MarkCommand extends Command {
     }
 
     @Override
-    public void exec(TaskList tasks, Ui ui, Storage storage) throws IOException, MochiException {
-        tasks.markTask(taskInd, ui, storage);
+    public String exec(TaskList tasks, Ui ui, Storage storage) throws IOException, MochiException {
+        return tasks.markTask(taskInd, ui, storage);
     }
 }
 
 /**
- * Handles the "unmark" command to mark a test as not done.
+ * Handles the "unmark" command to mark a task as not done.
  */
 class UnmarkCommand extends Command {
-    private int taskInd;
+    private final int taskInd;
 
     /**
      * Constructs an UnmarkCommand with the specified task index.
@@ -130,8 +127,8 @@ class UnmarkCommand extends Command {
     }
 
     @Override
-    public void exec(TaskList tasks, Ui ui, Storage storage) throws IOException, MochiException {
-        tasks.unmarkTask(taskInd, ui, storage);
+    public String exec(TaskList tasks, Ui ui, Storage storage) throws IOException, MochiException {
+        return tasks.unmarkTask(taskInd, ui, storage);
     }
 }
 
@@ -139,10 +136,10 @@ class UnmarkCommand extends Command {
  * Handles the "find" command to search for tasks containing a given keyword.
  */
 class FindCommand extends Command {
-    private String keyword;
+    private final String keyword;
 
     /**
-     * Constructs a FindComment with the specified keyword.
+     * Constructs a FindCommand with the specified keyword.
      * @param keyword The keyword to search for in tasks.
      */
     public FindCommand(String keyword) {
@@ -150,8 +147,9 @@ class FindCommand extends Command {
     }
 
     @Override
-    public void exec(TaskList tasks, Ui ui, Storage storage) {
-        tasks.findTasks(keyword, ui);
+    public String exec(TaskList tasks, Ui ui, Storage storage) {
+        return tasks.findTasks(keyword, ui);
     }
 }
+
 

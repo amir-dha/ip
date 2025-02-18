@@ -63,7 +63,7 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\duke.jar
+set CLASSPATH=%APP_HOME%\lib\mochi.jar
 
 @rem Execute ip
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %IP_OPTS%  -jar "%CLASSPATH%" %CMD_LINE_ARGS%
