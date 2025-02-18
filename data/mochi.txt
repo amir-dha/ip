@@ -1,6 +1,8 @@
 T | 1 | read book
 D | 0 | finish assignment | 2024-07-02 1800
-E | 0 | party | 2024-07-02 1800 | 2024-07-02 2300
 T | 0 | read book
-D | 0 | finish assignment | 2024-07-02 1800
+T | 0 | read book
 E | 0 | party | 2024-07-02 1800 | 2024-07-02 2300
+T | 0 | list
+T | 0 | maliha
+T | 0 | list

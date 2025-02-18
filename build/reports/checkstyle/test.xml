@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="10.2">
-<file name="C:\Users\ravic\ip\ip\src\test\java\mochi\MochiTest.java">
+<file name="C:\Users\ravic\CS2103T\ip\ip\src\test\java\mochi\MochiTest.java">
 </file>
-<file name="C:\Users\ravic\ip\ip\src\test\java\mochi\task\TaskListTest.java">
+<file name="C:\Users\ravic\CS2103T\ip\ip\src\test\java\mochi\task\TaskListTest.java">
 </file>
 </checkstyle>

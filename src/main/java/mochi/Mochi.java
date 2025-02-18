@@ -11,7 +11,7 @@ import mochi.ui.Ui;
 
 
 /**
- * Main class for Mochi chatbot application.
+ * mochi.Main class for Mochi chatbot application.
  * Handles user interactions, task management and file storage.
  */
 
@@ -35,15 +35,6 @@ public class Mochi {
             tasks = new TaskList();
         }
     }
-
-    /**
-     * Main entry point for the application.
-     * @param args Command-line arguments.
-     */
-    public static void main(String[] args) {
-        new Mochi("./data/mochi.txt").run();
-    }
-
     /**
      * Run the chatbot loop, processing user commands until exit command is given.
      */
@@ -65,6 +56,17 @@ public class Mochi {
             }
         }
         scanner.close();
+    }
+
+    public String getResponse(String input) {
+        try {
+            Command command = Parser.parse(input);
+            return command.exec(tasks, ui, storage);
+        } catch (MochiException e) {
+            return "Error: " + e.getMessage();
+        } catch (Exception e) {
+            return "Unexpected error: " + e.getMessage();
+        }
     }
 }
 
