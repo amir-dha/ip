@@ -148,7 +148,7 @@ class FindCommand extends Command {
 
     @Override
     public String exec(TaskList tasks, Ui ui, Storage storage) {
-        return tasks.findTasks(keyword);
+        return tasks.findTasks(keyword, ui);
     }
 }
 
