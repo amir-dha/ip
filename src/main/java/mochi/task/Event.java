@@ -33,6 +33,14 @@ public class Event extends Task {
                 + desc + " | " + from.format(INPUT_FORMAT) + " | " + to.format(INPUT_FORMAT);
     }
 
+    public LocalDateTime getFrom() {
+        return from;
+    }
+
+    public LocalDateTime getTo() {
+        return to;
+    }
+
     /**
      * Returns a string representation of the Event task.
      * @return The formatted task string.

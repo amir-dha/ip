@@ -12,7 +12,6 @@ public class Todo extends Task {
     public Todo(String desc) {
         super(desc);
     }
-
     /**
      * Converts the Todo task into a formatted string for file storage.
      * @return The file representation of the task.

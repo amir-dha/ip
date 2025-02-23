@@ -29,6 +29,10 @@ public class Deadline extends Task {
         return "D | " + (isDone ? "1" : "0") + " | " + desc + " | " + by.format(INPUT_FORMAT);
     }
 
+    public LocalDateTime getBy() {
+        return by;
+    }
+
     /**
      * Returns a string representation of the Deadline task.
      * @return The formatted task string.
