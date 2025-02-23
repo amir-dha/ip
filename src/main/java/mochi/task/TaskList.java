@@ -146,7 +146,7 @@ public class TaskList {
     /**
      * Finds and lists tasks that contain the given keyword in their description.
      */
-    public String findTasks(String keyword) {
+    public String findTasks(String keyword, Ui ui) {
         ArrayList<Task> matchingTasks = new ArrayList<>();
         for (Task task : tasks) {
             if (task.toString().toLowerCase().contains(keyword.toLowerCase())) {
