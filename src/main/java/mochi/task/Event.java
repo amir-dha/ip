@@ -2,12 +2,14 @@ package mochi.task;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
+import mochi.MochiException;
 /**
  * Represents an event task with a start and end time.
  */
 public class Event extends Task {
-    private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+    private static final DateTimeFormatter EXPECTED_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private static final DateTimeFormatter OUTPUT_FORMAT = DateTimeFormatter.ofPattern("d MMM yyyy, h:mm a");
     protected LocalDateTime from;
     protected LocalDateTime to;
@@ -17,10 +19,16 @@ public class Event extends Task {
      * @param from The start time in "yyyy-MM-dd HHmm" format.
      * @param to The end time in "yyyy-MM-dd HHmm" format.
      */
-    public Event(String desc, String from, String to) {
+    public Event(String desc, String from, String to) throws MochiException {
         super(desc);
-        this.from = LocalDateTime.parse(from.trim(), INPUT_FORMAT);
-        this.to = LocalDateTime.parse(to.trim(), INPUT_FORMAT);
+        try {
+            this.from = LocalDateTime.parse(from.trim(), EXPECTED_FORMAT);
+            this.to = LocalDateTime.parse(to.trim(), EXPECTED_FORMAT);
+        } catch (DateTimeParseException e) {
+            throw new MochiException("Oi, invalid time format! Use 'yyyy-MM-dd HHmm' only. "
+                    + "No need for ':' or AM/PM nonsense.");
+        }
+
     }
 
     /**
@@ -30,7 +38,7 @@ public class Event extends Task {
     @Override
     public String toFileString() {
         return "E | " + (isDone ? "1" : "0") + " | "
-                + desc + " | " + from.format(INPUT_FORMAT) + " | " + to.format(INPUT_FORMAT);
+                + desc + " | " + from.format(EXPECTED_FORMAT) + " | " + to.format(EXPECTED_FORMAT);
     }
 
     public LocalDateTime getFrom() {

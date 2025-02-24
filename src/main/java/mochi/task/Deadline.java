@@ -2,12 +2,14 @@ package mochi.task;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
+import mochi.MochiException;
 /**
  * Represents a task with a deadline.
  */
 public class Deadline extends Task {
-    private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+    private static final DateTimeFormatter EXPECTED_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private static final DateTimeFormatter OUTPUT_FORMAT = DateTimeFormatter.ofPattern("d MMM yyyy, h:mm a");
     protected LocalDateTime by;
     /**
@@ -15,9 +17,15 @@ public class Deadline extends Task {
      * @param desc The task description.
      * @param by The deadline in "yyyy-MM-dd HHmm" format.
      */
-    public Deadline(String desc, String by) {
+    public Deadline(String desc, String by) throws MochiException {
         super(desc);
-        this.by = LocalDateTime.parse(by, INPUT_FORMAT);
+        try {
+            this.by = LocalDateTime.parse(by, EXPECTED_FORMAT);
+        } catch (DateTimeParseException e) {
+            throw new MochiException("Oi, invalid time format! Use 'yyyy-MM-dd HHmm' only. "
+                    + "No need for ':' or AM/PM nonsense.");
+        }
+
     }
 
     /**
@@ -26,7 +34,7 @@ public class Deadline extends Task {
      */
     @Override
     public String toFileString() {
-        return "D | " + (isDone ? "1" : "0") + " | " + desc + " | " + by.format(INPUT_FORMAT);
+        return "D | " + (isDone ? "1" : "0") + " | " + desc + " | " + by.format(EXPECTED_FORMAT);
     }
 
     public LocalDateTime getBy() {

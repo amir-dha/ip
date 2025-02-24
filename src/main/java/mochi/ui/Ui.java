@@ -4,50 +4,49 @@ package mochi.ui;
  * Handles all user interactions, including displaying messages and errors.
  */
 public class Ui {
-    private static final String LINE = " ----------------------------------------------------------------------------";
     private static final String BOT_NAME = "Mochi";
 
-    /**
-     * Prints a horizontal line for formatting purposes.
-     */
-    public void printLine() {
-        System.out.println(LINE);
-    }
 
     /**
      * Displays a welcome message when the application starts.
      */
-    public void showWelcome() {
-        printLine();
-        System.out.println(" It's you again.. " + BOT_NAME + " at your service miserably.");
-        System.out.println(" What you want?");
-        printLine();
+    public String showWelcome() {
+        return "It's you again.. " + BOT_NAME + " at your service miserably.\nWhat you want?";
     }
 
     /**
      * Displays an error message when the task file cannot be loaded.
      */
-    public void showLoadingError() {
-        System.out.println("Bro cannot load tasks from file?!!");
+    public String showLoadingError() {
+        return "Bro cannot load tasks from file?!!";
     }
 
     /**
      * Displays a formatted error message.
      * @param message The error message to display.
      */
-    public void showError(String message) {
-        printLine();
-        System.out.println(" " + message);
-        printLine();
+    public String showError(String message) {
+        return "⚠ Got error: " + message;
+    }
+
+    /**
+     * Displays an unexpected error message.
+     * @param message The unexpected error message.
+     */
+    public String showUnexpectedError(String message) {
+        return "⚠ Got unexpected error: " + message;
+    }
+
+
+    public static String showByeMessage() {
+        return "Bye. Sayonara. Begone. Finally.";
     }
 
     /**
      * Displays a general message to the user.
      * @param message The message to display.
      */
-    public void showMessage(String message) {
-        printLine();
-        System.out.println(message);
-        printLine();
+    public String showMessage(String message) {
+        return message;
     }
 }

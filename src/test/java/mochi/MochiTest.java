@@ -1,13 +1,22 @@
 package mochi;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import mochi.storage.Storage;
+import mochi.task.TaskList;
+import mochi.task.Todo;
+import mochi.ui.Ui;
+
+
 
 public class MochiTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -45,17 +54,35 @@ public class MochiTest {
     }
 
     @Test
-    void testMarkAsDone() {
-        mochi.getResponse("todo read book"); // Add a task first
-        String response = mochi.getResponse("mark 1");
-        assertTrue(response.contains("[T][X] read book"));
+    void testMarkAsDone() throws IOException, MochiException { // Add `MochiException`
+        TaskList tasks = new TaskList();
+        Ui ui = new Ui();
+        Storage storage = new Storage("test.txt");
+
+        Todo task = new Todo("Test marking");
+        tasks.addTask(task, ui, storage);
+
+        assertFalse(task.isTaskDone(), "Task should be initially not done.");
+
+        tasks.markTask(1, ui, storage);
+
+        assertTrue(task.isTaskDone(), "Task should be marked as done.");
     }
 
     @Test
-    void testUnmarkAsDone() {
-        mochi.getResponse("todo read book"); // Add a task first
-        mochi.getResponse("mark 1"); // Mark it
-        String response = mochi.getResponse("unmark 1");
-        assertTrue(response.contains("[T][ ] read book"));
+    void testUnmarkAsDone() throws IOException, MochiException { // Add `MochiException`
+        TaskList tasks = new TaskList();
+        Ui ui = new Ui();
+        Storage storage = new Storage("test.txt");
+
+        Todo task = new Todo("Test unmarking");
+        tasks.addTask(task, ui, storage);
+
+        tasks.markTask(1, ui, storage);
+        assertTrue(task.isTaskDone(), "Task should be marked as done before unmarking.");
+
+        tasks.unmarkTask(1, ui, storage);
+        assertFalse(task.isTaskDone(), "Task should be marked as not done after unmarking.");
     }
+
 }

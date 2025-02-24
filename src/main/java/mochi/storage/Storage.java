@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import mochi.MochiException;
 import mochi.task.Deadline;
 import mochi.task.Event;
 import mochi.task.Task;
@@ -94,7 +95,7 @@ public class Storage {
     /**
      * Creates a Task object based on type.
      */
-    private Task createTask(String type, String description, String[] parts) {
+    private Task createTask(String type, String description, String[] parts) throws MochiException {
         return switch (type) {
         case "T" -> new Todo(description);
         case "D" -> parts.length > 3 ? new Deadline(description, parts[3]) : null;

@@ -25,6 +25,23 @@ public abstract class Command {
     public boolean isBye() {
         return false;
     }
+
+    /**
+     * Processes a given user command and returns the response.
+     * Moves execution logic away from Mochi.java for cleaner design.
+     */
+    public static String processCommand(String input, TaskList tasks, Ui ui, Storage storage) {
+        try {
+            Command command = Parser.parse(input);
+            return command.exec(tasks, ui, storage);
+        } catch (MochiException e) {
+            return ui.showError(e.getMessage());
+        } catch (IOException e) {
+            return ui.showUnexpectedError("File error: " + e.getMessage());
+        } catch (Exception e) {
+            return ui.showUnexpectedError(e.getMessage());
+        }
+    }
 }
 
 /**
@@ -33,7 +50,7 @@ public abstract class Command {
 class ByeCommand extends Command {
     @Override
     public String exec(TaskList tasks, Ui ui, Storage storage) {
-        return "Bye. Sayonara. Begone.";
+        return ui.showByeMessage();
     }
 
     @Override
@@ -43,12 +60,29 @@ class ByeCommand extends Command {
 }
 
 /**
+ * Returns the sorted task list for a specific category.
+ */
+class SortCommand extends Command {
+    private final String category;
+    public SortCommand(String category) {
+        this.category = category;
+    }
+    @Override
+    public String exec(TaskList tasks, Ui ui, Storage storage) throws MochiException {
+        if (category.equals("all")) {
+            return tasks.listSortedTasks(ui);
+        }
+        return tasks.listSortedTasksByCategory(category);
+    }
+}
+
+/**
  * Handles the "list" command to display all tasks.
  */
 class ListCommand extends Command {
     @Override
     public String exec(TaskList tasks, Ui ui, Storage storage) {
-        return tasks.listTasks(ui);
+        return tasks.listSortedTasks(ui);
     }
 }
 

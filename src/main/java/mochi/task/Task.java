@@ -34,6 +34,11 @@ public abstract class Task {
         this.isDone = false;
     }
 
+    public boolean isTaskDone() {
+        return isDone;
+    }
+
+
     /**
      * retrieves the task's status.
      * @return A string indicating whether the task is completed.

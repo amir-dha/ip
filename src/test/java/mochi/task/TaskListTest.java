@@ -20,7 +20,7 @@ public class TaskListTest {
     void setUp() throws IOException {
         taskList = new TaskList(new ArrayList<>());
         ui = new Ui();
-        storage = new Storage("test.txt");
+        storage = new Storage("data/mochi-test.txt");
     }
 
     @Test

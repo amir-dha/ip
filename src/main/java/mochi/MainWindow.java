@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import mochi.ui.Ui;
 
 /**
  * Controller for the main GUI.
@@ -35,6 +36,8 @@ public class MainWindow extends AnchorPane {
     /** Injects the Mochi instance */
     public void setMochi(Mochi m) {
         mochi = m;
+        dialogContainer.getChildren().add(
+                DialogBox.getBotDialog(new Ui().showWelcome(), new ImageView(mochiImage)));
     }
 
     /**
