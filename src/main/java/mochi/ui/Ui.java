@@ -1,5 +1,8 @@
 package mochi.ui;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Handles all user interactions, including displaying messages and errors.
  */
@@ -26,7 +29,7 @@ public class Ui {
      * @param message The error message to display.
      */
     public String showError(String message) {
-        return "⚠ Got error: " + message;
+        return "Got error: " + message;
     }
 
     /**
@@ -34,7 +37,7 @@ public class Ui {
      * @param message The unexpected error message.
      */
     public String showUnexpectedError(String message) {
-        return "⚠ Got unexpected error: " + message;
+        return "Got unexpected error: " + message;
     }
 
 
@@ -48,5 +51,17 @@ public class Ui {
      */
     public String showMessage(String message) {
         return message;
+    }
+
+    /**
+     * Delays the exit process for a few seconds before closing the application.
+     */
+    public void delayExit(Runnable exitAction) {
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                exitAction.run(); // Call the exit action (which closes the app)
+            }
+        }, 3000); // Delay for 3 seconds (3000ms)
     }
 }

@@ -17,7 +17,6 @@ public class TaskList {
     private static final String NO_TASKS_MESSAGE = "No task leh. You so free ah??";
     private static final String TASK_NOT_FOUND = "Babes, this task doesn't even exist?? How to ";
     private ArrayList<Task> tasks;
-
     /**
      * Comparator to sort tasks based on date (Deadlines/Events) or alphabetically (ToDos).
      */

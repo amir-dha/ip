@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="mochi.MochiTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-24T07:14:23" hostname="AMIR" time="0.185">
+<testsuite name="mochi.MochiTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-02-25T13:36:38" hostname="AMIR" time="0.097">
   <properties/>
-  <testcase name="testAddTodo()" classname="mochi.MochiTest" time="0.1"/>
-  <testcase name="testAddDeadline()" classname="mochi.MochiTest" time="0.042"/>
-  <testcase name="testUnmarkAsDone()" classname="mochi.MochiTest" time="0.012"/>
-  <testcase name="testMarkAsDone()" classname="mochi.MochiTest" time="0.006"/>
-  <testcase name="testAddEvent()" classname="mochi.MochiTest" time="0.016"/>
+  <testcase name="testAddTodo()" classname="mochi.MochiTest" time="0.037"/>
+  <testcase name="testAddDeadline()" classname="mochi.MochiTest" time="0.032"/>
+  <testcase name="testUnmarkAsDone()" classname="mochi.MochiTest" time="0.006"/>
+  <testcase name="testMarkAsDone()" classname="mochi.MochiTest" time="0.004"/>
+  <testcase name="testAddEvent()" classname="mochi.MochiTest" time="0.011"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
