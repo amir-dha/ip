@@ -15,11 +15,12 @@ public class TaskListTest {
     private Storage storage;
 
     @BeforeEach
-    void setUp() throws IOException {
+    void setUp() {
         taskList = new TaskList(new ArrayList<>());
         ui = new Ui();
         storage = new Storage("test.txt");
     }
+
 
     @Test
     void testAddTodoTask() throws IOException {
