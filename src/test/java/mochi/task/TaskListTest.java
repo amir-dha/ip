@@ -27,7 +27,6 @@ public class TaskListTest {
         Task task = new Todo("Read book");
         taskList.addTask(task, ui, storage);
 
-        // Java assertions
         assert taskList.getTasks().size() == 1 : "TaskList size should be 1 after adding a task";
         assert taskList.getTasks().get(0).toString().equals(" [T][ ] Read book")
                 : "Added task should match expected format";

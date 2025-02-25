@@ -34,7 +34,13 @@ public class MainWindow extends AnchorPane {
     private Image userImage = new Image(getClass().getResourceAsStream("/images/look.png"));
     private Image mochiImage = new Image(getClass().getResourceAsStream("/images/smile.png"));
 
-    /** nnn*/
+    /**
+     * Initializes the UI components and event listeners.
+     * This method binds the scroll pane's vertical scrollbar to the height
+     * of the dialog container so that it automatically scrolls down when new messages are added.
+     * It also adds a key event listener to the user input field, allowing users to
+     * submit input by pressing the Enter key.
+     */
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
