@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="mochi.task.TaskListTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-02-18T17:38:59" hostname="AMIR" time="0.002">
+<testsuite name="mochi.task.TaskListTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-02-25T17:40:18" hostname="AMIR" time="0.034">
   <properties/>
-  <testcase name="testAddTodoTask()" classname="mochi.task.TaskListTest" time="0.002"/>
+  <testcase name="testAddTodoTask()" classname="mochi.task.TaskListTest" time="0.034"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
