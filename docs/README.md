@@ -1,7 +1,7 @@
 # Mochi User Guide
 
-/Ui.png
- 
+![Ui.png](https://github.com/amir-dha/ip/blob/master/docs/Ui.png)
+
 ### Mochi, who?
 _Say hi to Mochi, who ironically, is not sweet at all and **WILL** badger you to be on task. It's giving:_
 
