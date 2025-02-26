@@ -84,19 +84,35 @@ public class Parser {
         }
         return new AddCommand(new Todo(parts[1].trim()));
     }
-
+    /**
+     * Handles the "deadline" command, ensuring both description and due date are provided.
+     * Parses the input correctly and throws exceptions for missing values.
+     *
+     * @param parts The parsed user input split into parts.
+     * @return A new AddCommand containing the deadline details.
+     * @throws MochiException If the description or due date is missing.
+     */
     private static Command handleDeadline(String[] parts) throws MochiException {
-        if (parts.length < 2) {
+        if (parts.length < 2 || parts[1].trim().isEmpty()) {
             throw new MochiException("Oi, deadline need description and a '/by' date. What you doing?");
         }
+
+        // Check if input starts with "/by", meaning no description was given
+        if (parts[1].trim().startsWith("/by")) {
+            if (parts[1].trim().equals("/by")) {
+                throw new MochiException("This is just vibes, where is the description and the date/time?");
+            }
+            throw new MochiException("Oi where's the description? You can't just give a date lah.");
+        }
+
         if (!parts[1].contains("/by")) {
             throw new MochiException("Oi, deadline missing '/by' keyword lah.");
         }
 
         String[] deadlineParts = parts[1].split(" /by ", 2);
 
-        if (deadlineParts.length < 2) {
-            throw new MochiException("Eh deadline missing date/time after '/by'. "
+        if (deadlineParts.length < 2 || deadlineParts[1].trim().isEmpty()) {
+            throw new MochiException("Deadline missing date/time after '/by'. "
                     + "Format: deadline <description> /by <date/time>.");
         }
 
@@ -104,59 +120,73 @@ public class Parser {
             throw new MochiException("This is just vibes, where is the description and the date/time?");
         }
 
-        if (deadlineParts[0].trim().isEmpty()) {
-            throw new MochiException("Oi where's the description? Format is: deadline <description> /by <date/time>");
-        }
-
-        if (deadlineParts[1].trim().isEmpty()) {
-            throw new MochiException("Deadline missing date/time after '/by'. "
-                    + "Format: deadline <description> /by <date/time>.");
-        }
-
         return new AddCommand(new Deadline(deadlineParts[0].trim(), deadlineParts[1].trim()));
     }
 
     /**
-     * Handles the "event" command, ensuring description, start time, and end time are provided.
+     * Parses and validates the "event" command, ensuring a description, start time, and end time are provided.
+     * Throws a {@code MochiException} if any required field is missing or incorrectly formatted.
+     *
+     * @param parts The split input command, where parts[0] is "event" and parts[1] contains details.
+     * @return A new {@code AddCommand} with the event details if valid.
+     * @throws MochiException If required fields are missing or incorrectly formatted.
      */
     private static Command handleEvent(String[] parts) throws MochiException {
-        if (parts.length < 2) {
+        if (parts.length < 2 || parts[1].trim().isEmpty()) {
             throw new MochiException("Oi event need description, a '/from' time, and a '/to' time. "
                     + "Why even use this app?");
         }
-        if (!parts[1].contains("/from")) {
-            throw new MochiException("Aiyo missing '/from' lah. "
-                    + "Format: event <description> /from <start time> /to <end time>.");
-        }
-        if (!parts[1].contains("/to")) {
-            throw new MochiException("Babes where is '/to'? "
-                    + "Format: event <description> /from <start time> /to <end time>.");
+
+        String input = parts[1].trim();
+
+        if (!input.contains("/from") && !input.contains("/to") && input.trim().isEmpty()) {
+            throw new MochiException("This is just vibes, where is the description, start time, and end time?");
         }
 
-        String[] eventParts = parts[1].split("\\s*/from\\s*|\\s*/to\\s*", 3);
+        String[] eventParts = input.split("\\s*/from\\s*|\\s*/to\\s*", 3);
 
-        if (eventParts.length < 3) {
-            throw new MochiException("Eh event format is wrong. "
-                    + "Format: event <description> /from <start time> /to <end time>.");
-        }
+        String description = eventParts.length > 0 ? eventParts[0].trim() : "";
+        String fromTime = eventParts.length > 1 ? eventParts[1].trim() : "";
+        String toTime = eventParts.length > 2 ? eventParts[2].trim() : "";
 
-        if (eventParts[0].trim().isEmpty()) {
+        boolean hasDescription = !description.isEmpty();
+        boolean hasFromTime = !fromTime.isEmpty();
+        boolean hasToTime = !toTime.isEmpty();
+        boolean hasFromKeyword = input.contains("/from");
+        boolean hasToKeyword = input.contains("/to");
+
+        if (!hasDescription && !hasFromKeyword && !hasToKeyword) {
+            throw new MochiException("Oi event need description, start time, and end time.");
+        } else if (!hasDescription && !hasFromKeyword) {
+            throw new MochiException("Oi event need description and start time.");
+        } else if (!hasDescription && !hasToKeyword) {
+            throw new MochiException("Oi event need description and end time.");
+        } else if (!hasDescription) {
             throw new MochiException("Oi event need a description. You want an event with no name?");
+        } else if (!hasFromKeyword) {
+            throw new MochiException("Aiyo missing '/from' lah. Format: "
+                    + "event <description> /from <YYYY-MM-DD HHmm> /to <YYYY-MM-DD HHmm>.");
+        } else if (hasFromKeyword && !hasFromTime) {
+            throw new MochiException("Where's the start time? Format: event <description> "
+                    + "/from <YYYY-MM-DD HHmm> /to <YYYY-MM-DD HHmm>.");
+        } else if (!hasToKeyword) {
+            throw new MochiException("Babes where is '/to'? Format: event "
+                    + "<description> /from <YYYY-MM-DD HHmm> /to <YYYY-MM-DD HHmm>.");
+        } else if (hasToKeyword && !hasToTime) {
+            throw new MochiException("Missing end time lah. Format: event <description> "
+                    + "/from <YYYY-MM-DD HHmm> /to <YYYY-MM-DD HHmm>.");
+        } else {
+            return new AddCommand(new Event(description, fromTime, toTime));
         }
-
-        if (eventParts[1].trim().isEmpty()) {
-            throw new MochiException("Where's the start time? "
-                    + "Format: event <description> /from <start time> /to <end time>.");
-        }
-
-        if (eventParts[2].trim().isEmpty()) {
-            throw new MochiException("Missing end time lah. "
-                    + "Format: event <description> /from <start time> /to <end time>.");
-        }
-
-        return new AddCommand(new Event(eventParts[0].trim(), eventParts[1].trim(), eventParts[2].trim()));
     }
-
+    /**
+     * Handles the "sort" command, allowing sorting of todos, deadlines, or events.
+     * Validates the category and ensures a correct input format.
+     *
+     * @param parts The parsed user input split into parts.
+     * @return A new SortCommand with the specified category.
+     * @throws MochiException If no category is specified or if it's invalid.
+     */
     private static Command handleSort(String[] parts) throws MochiException {
         if (parts.length < 2 || parts[1].trim().isEmpty()) {
             throw new MochiException("Sort what? Specify format: sort todos | sort deadlines | sort events");
