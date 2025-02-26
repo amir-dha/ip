@@ -1,6 +1,8 @@
 package mochi.command;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javafx.application.Platform;
 import mochi.MochiException;
@@ -51,8 +53,14 @@ public abstract class Command {
 class ByeCommand extends Command {
     @Override
     public String exec(TaskList tasks, Ui ui, Storage storage) {
-        Platform.exit();
-        System.exit(0);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.exit();
+                System.exit(0);
+            }
+        }, 1500);
+
         return ui.showByeMessage();
     }
 

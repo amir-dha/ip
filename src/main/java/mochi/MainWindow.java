@@ -1,6 +1,5 @@
 package mochi;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -78,11 +77,6 @@ public class MainWindow extends AnchorPane {
                 DialogBox.getUserDialog(input, new ImageView(userImage)),
                 DialogBox.getBotDialog(response, new ImageView(mochiImage))
         );
-
-        if (input.equalsIgnoreCase("bye")) {
-            ui.delayExit(() -> Platform.exit());
-        }
-
         userInput.clear();
     }
 }

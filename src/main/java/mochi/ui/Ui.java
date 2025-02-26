@@ -1,8 +1,5 @@
 package mochi.ui;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 /**
  * Handles all user interactions, including displaying messages and errors.
  */
@@ -51,17 +48,5 @@ public class Ui {
      */
     public String showMessage(String message) {
         return message;
-    }
-
-    /**
-     * Delays the exit process for a few seconds before closing the application.
-     */
-    public void delayExit(Runnable exitAction) {
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                exitAction.run();
-            }
-        }, 1500);
     }
 }
