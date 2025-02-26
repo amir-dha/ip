@@ -2,6 +2,7 @@ package mochi.command;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import mochi.MochiException;
 import mochi.storage.Storage;
 import mochi.task.Task;
@@ -50,6 +51,8 @@ public abstract class Command {
 class ByeCommand extends Command {
     @Override
     public String exec(TaskList tasks, Ui ui, Storage storage) {
+        Platform.exit();
+        System.exit(0);
         return ui.showByeMessage();
     }
 

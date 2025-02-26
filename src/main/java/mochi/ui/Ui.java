@@ -60,8 +60,8 @@ public class Ui {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                exitAction.run(); // Call the exit action (which closes the app)
+                exitAction.run();
             }
-        }, 3000); // Delay for 3 seconds (3000ms)
+        }, 1500);
     }
 }

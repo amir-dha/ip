@@ -85,9 +85,6 @@ public class Parser {
         return new AddCommand(new Todo(parts[1].trim()));
     }
 
-    /**
-     * Handles the "deadline" command, ensuring both description and date/time are provided.
-     */
     private static Command handleDeadline(String[] parts) throws MochiException {
         if (parts.length < 2) {
             throw new MochiException("Oi, deadline need description and a '/by' date. What you doing?");
@@ -108,7 +105,7 @@ public class Parser {
         }
 
         if (deadlineParts[0].trim().isEmpty()) {
-            throw new MochiException("Oi where's the description? You can't just give a date lah.");
+            throw new MochiException("Oi where's the description? Format is: deadline <description> /by <date/time>");
         }
 
         if (deadlineParts[1].trim().isEmpty()) {
