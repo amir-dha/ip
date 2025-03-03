@@ -179,6 +179,7 @@ public class Parser {
             return new AddCommand(new Event(description, fromTime, toTime));
         }
     }
+
     /**
      * Handles the "sort" command, allowing sorting of todos, deadlines, or events.
      * Validates the category and ensures a correct input format.
