@@ -21,7 +21,6 @@ public class TaskListTest {
         storage = new Storage("data/mochi-test.txt");
     }
 
-
     @Test
     void testAddTodoTask() throws IOException {
         Task task = new Todo("Read book");
@@ -31,5 +30,4 @@ public class TaskListTest {
         assert taskList.getTasks().get(0).toString().equals(" [T][ ] Read book")
                 : "Added task should match expected format";
     }
-
 }
