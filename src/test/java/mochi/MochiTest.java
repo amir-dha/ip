@@ -16,8 +16,6 @@ import mochi.task.TaskList;
 import mochi.task.Todo;
 import mochi.ui.Ui;
 
-
-
 public class MochiTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -84,5 +82,4 @@ public class MochiTest {
         tasks.unmarkTask(1, ui, storage);
         assertFalse(task.isTaskDone(), "Task should be marked as not done after unmarking.");
     }
-
 }
