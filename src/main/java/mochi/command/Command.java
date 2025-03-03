@@ -196,5 +196,3 @@ class FindCommand extends Command {
         return tasks.findTasks(keyword, ui);
     }
 }
-
-
